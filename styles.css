@@ -26,6 +26,12 @@ h1 {
     font-family: 'Input Condensed';
 }
 
+h3 {
+    font-family: 'Input';
+    font-size: 14px;
+    font-weight: 400;
+}
+
 #description {
     font-size: 12px;
     padding: 0 40px;
@@ -42,7 +48,7 @@ h1 {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    max-height: 2400px; 
+    max-height: 1800px; 
     gap: 2rem;
     margin-bottom: 4rem;
 }
@@ -74,28 +80,32 @@ h1 {
 
 .grid-item-overlay {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 1rem;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.85);
+    color: #333;
+    padding: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    text-align: left;
 }
 
 .grid-item:hover .grid-item-overlay {
-    transform: translateY(0);
+    opacity: 1;
 }
 
 .view-button {
-    background: white;
-    color: #333;
+    background: #333;
+    color: white;
     border: none;
     padding: 0.5rem 1rem;
-    border-radius: 4px;
     cursor: pointer;
-    margin-top: 0.5rem;
 }
 
 /* Modal Gallery */
@@ -154,7 +164,6 @@ h1 {
     margin: 0 auto;
     background: white;
     padding: 2rem;
-    border-radius: 8px;
 }
 
 /* Piece containers */
