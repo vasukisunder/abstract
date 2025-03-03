@@ -7,9 +7,9 @@ let currentPieceIndex = 0;
 const pieces = [
     {
         id: 1,
-        title: "Piece 1",
+        title: "Composition with Large Red Plane, Yellow, Black, Gray, and Blue by Piet Mondrian (1921)",
         originalImage: "assets/mondrian1.jpg",
-        description: "Description of piece 1...",
+        description: "In the 1920s, Mondrian began to create the definitive abstract paintings for which he is best known. He limited his palette to white, black, gray, and the three primary colors, with the composition constructed from thick, black horizontal and vertical lines that delineated the outlines of the various rectangles of color or reserve. The simplification of the pictorial elements was essential for Mondrian's creation of a new abstract art, distinct from Cubism and Futurism. The assorted blocks of color and lines of differing width create rhythms that ebb and flow across the surface of the canvas, echoing the varied rhythm of modern life. The composition is asymmetrical, as in all of his mature paintings, with one large dominant block of color, here red, balanced by distribution of the smaller blocks of yellow, blue gray, and white around it. This style has been quoted by many artists and designers in all aspects of culture since the 1920s.",
         createSketch: () => {
             return new p5((p) => createMondrian(p), 'sketch-holder');
         }
