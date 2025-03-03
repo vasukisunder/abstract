@@ -1,7 +1,6 @@
 export function createMondrian(p) {
-    const SCALE_FACTOR = 0.6;
-    const ACTUAL_WIDTH = 800 * SCALE_FACTOR;
-    const ACTUAL_HEIGHT = 790 * SCALE_FACTOR;
+    const ACTUAL_WIDTH = 480;
+    const ACTUAL_HEIGHT = 474;
     const MOVEMENT_DURATION = 5;
     const SETTLE_DURATION = 3;
 
@@ -38,61 +37,58 @@ export function createMondrian(p) {
         const canvas = p.createCanvas(ACTUAL_WIDTH, ACTUAL_HEIGHT);
         p.frameRate(60);
         
-        // Create moving shapes
         shapes = [
-            new Shape(415 * SCALE_FACTOR, 410 * SCALE_FACTOR, '#dc432c'),
-            new Shape(265 * SCALE_FACTOR, 300 * SCALE_FACTOR, '#DFBC53'),
-            new Shape(105 * SCALE_FACTOR, 203 * SCALE_FACTOR, '#DFBC53'),
-            new Shape(250 * SCALE_FACTOR, 160 * SCALE_FACTOR, '#1F3D6F'),
-            new Shape(215 * SCALE_FACTOR, 210 * SCALE_FACTOR, '#171A11'),
-            new Shape(200 * SCALE_FACTOR, 60 * SCALE_FACTOR, '#171A11'),
-            new Shape(50 * SCALE_FACTOR, 200 * SCALE_FACTOR, '#dc432c'),
+            new Shape(249, 246, '#dc432c'),
+            new Shape(159, 180, '#DFBC53'),
+            new Shape(63, 122, '#DFBC53'),
+            new Shape(150, 96, '#1F3D6F'),
+            new Shape(129, 126, '#171A11'),
+            new Shape(120, 36, '#171A11'),
+            new Shape(30, 120, '#dc432c'),
         ];
 
-        // Create background lines
         backgroundLines = [
-            new Shape(14 * SCALE_FACTOR, 685 * SCALE_FACTOR, '#171A11', true),
-            new Shape(740 * SCALE_FACTOR, 14 * SCALE_FACTOR, '#171A11', true),
-            new Shape(14 * SCALE_FACTOR, 213 * SCALE_FACTOR, '#171A11', true),
+            new Shape(8.4, 411, '#171A11', true),
+            new Shape(444, 8.4, '#171A11', true),
+            new Shape(8.4, 128, '#171A11', true),
         ];
 
         backgroundLinePositions = [
-            {x: 190 * SCALE_FACTOR, y: 20 * SCALE_FACTOR},
-            {x: 20 * SCALE_FACTOR, y: 290 * SCALE_FACTOR},
-            {x: 620 * SCALE_FACTOR, y: 290 * SCALE_FACTOR},
+            {x: 114, y: 12},
+            {x: 12, y: 174},
+            {x: 372, y: 174},
         ];
 
-        // Create foreground lines
         foregroundLines = [
-            new Shape(14 * SCALE_FACTOR, 675 * SCALE_FACTOR, '#171A11', true),
-            new Shape(14 * SCALE_FACTOR, 740 * SCALE_FACTOR, '#171A11', true),
-            new Shape(14 * SCALE_FACTOR, 740 * SCALE_FACTOR, '#171A11', true),
-            new Shape(14 * SCALE_FACTOR, 280 * SCALE_FACTOR, '#171A11', true),
-            new Shape(740 * SCALE_FACTOR, 14 * SCALE_FACTOR, '#171A11', true),
-            new Shape(740 * SCALE_FACTOR, 14 * SCALE_FACTOR, '#171A11', true),
-            new Shape(660 * SCALE_FACTOR, 14 * SCALE_FACTOR, '#171A11', true),
-            new Shape(455 * SCALE_FACTOR, 14 * SCALE_FACTOR, '#171A11', true)
+            new Shape(8.4, 405, '#171A11', true),
+            new Shape(8.4, 444, '#171A11', true),
+            new Shape(8.4, 444, '#171A11', true),
+            new Shape(8.4, 168, '#171A11', true),
+            new Shape(444, 8.4, '#171A11', true),
+            new Shape(444, 8.4, '#171A11', true),
+            new Shape(396, 8.4, '#171A11', true),
+            new Shape(273, 8.4, '#171A11', true)
         ];
 
         foregroundLinePositions = [
-            {x: 90 * SCALE_FACTOR, y: 90 * SCALE_FACTOR},
-            {x: 490 * SCALE_FACTOR, y: 15 * SCALE_FACTOR},
-            {x: 748 * SCALE_FACTOR, y: 19 * SCALE_FACTOR},
-            {x: 300 * SCALE_FACTOR, y: 500 * SCALE_FACTOR},
-            {x: 20 * SCALE_FACTOR, y: 90 * SCALE_FACTOR},
-            {x: 20 * SCALE_FACTOR, y: 590 * SCALE_FACTOR},
-            {x: 95 * SCALE_FACTOR, y: 490 * SCALE_FACTOR},
-            {x: 300 * SCALE_FACTOR, y: 745 * SCALE_FACTOR}
+            {x: 54, y: 54},
+            {x: 294, y: 9},
+            {x: 449, y: 11},
+            {x: 180, y: 300},
+            {x: 12, y: 54},
+            {x: 12, y: 354},
+            {x: 57, y: 294},
+            {x: 180, y: 447}
         ];
 
         originalPositions = [
-            {x: 90 * SCALE_FACTOR, y: 90 * SCALE_FACTOR},
-            {x: 490 * SCALE_FACTOR, y: 0},
-            {x: 0, y: 590 * SCALE_FACTOR},
-            {x: 500 * SCALE_FACTOR, y: 590 * SCALE_FACTOR},
-            {x: 90 * SCALE_FACTOR, y: 495 * SCALE_FACTOR},
-            {x: 300 * SCALE_FACTOR, y: 690 * SCALE_FACTOR},
-            {x: 750 * SCALE_FACTOR, y: 590 * SCALE_FACTOR},
+            {x: 54, y: 54},
+            {x: 294, y: 0},
+            {x: 0, y: 354},
+            {x: 300, y: 354},
+            {x: 54, y: 297},
+            {x: 180, y: 414},
+            {x: 450, y: 354},
         ];
 
         positions = originalPositions.map(pos => ({
@@ -107,19 +103,16 @@ export function createMondrian(p) {
 
     function generateNewTargets() {
         let gridPositions = [
-            {x: 90, y: 0},
-            {x: 490, y: 0},
-            {x: 90, y: 290},
-            {x: 300, y: 290},
-            {x: 500, y: 290},
-            {x: 0, y: 590},
-            {x: 300, y: 590},
-            {x: 500, y: 590},
-            {x: 750, y: 590}
-        ].map(pos => ({
-            x: pos.x * SCALE_FACTOR,
-            y: pos.y * SCALE_FACTOR
-        }));
+            {x: 54, y: 0},
+            {x: 294, y: 0},
+            {x: 54, y: 174},
+            {x: 180, y: 174},
+            {x: 300, y: 174},
+            {x: 0, y: 354},
+            {x: 180, y: 354},
+            {x: 300, y: 354},
+            {x: 450, y: 354}
+        ];
 
         if(p.random() < 0.2) {
             targetPositions = [...originalPositions];
@@ -129,15 +122,15 @@ export function createMondrian(p) {
             
             for(let i = 0; i < shapes.length; i++) {
                 let pos;
-                if(shapes[i].color === '#dc432c' && shapes[i].w > 400 * SCALE_FACTOR) {
+                if(shapes[i].color === '#dc432c' && shapes[i].w > 240) {
                     pos = {
-                        x: p.random([90, 300]) * SCALE_FACTOR,
-                        y: p.random([0, 290]) * SCALE_FACTOR
+                        x: p.random([54, 180]),
+                        y: p.random([0, 174])
                     };
                 } else if(shapes[i].color === '#1F3D6F') {
                     pos = {
-                        x: p.random([500, 750]) * SCALE_FACTOR,
-                        y: 590 * SCALE_FACTOR
+                        x: p.random([300, 450]),
+                        y: 354
                     };
                 } else {
                     let randomIndex = p.floor(p.random(availablePositions.length));
